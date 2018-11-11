@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: django-location-field
+Version: 2.0.6
+Summary: Location field for Django
+Home-page: http://github.com/caioariede/django-location-field
+Author: Caio Ariede
+Author-email: caio.ariede@gmail.com
+License: MIT
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Requires-Dist: Django (>=1.7)
+Requires-Dist: six
+
+This module provides a location field for Django applications.
+
+

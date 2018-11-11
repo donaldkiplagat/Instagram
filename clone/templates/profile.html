@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+{{block.super}}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../static/css/profile.css">
+
+</head>
+
+
+<!-- <p>{{profile.name}}</p>
+<p>{{profile.bio}}</p>
+<img src="{{profile.profile_pic.url}}" class=" img img-responsive" >
+
+<div class="container">
+  <div class="row">
+    {% for post in posts %}
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-0 hover ">
+      <img src="{{post.post.url}}" class=" img img-responsive" >
+    </div>
+    <p>Likes: {{post.likes}}</p>
+    <input  class="btn btn-success btn-lg comment" value="AJAX">
+
+
+    {{form.media}}
+    <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+
+      {% bootstrap_form form%}
+      <input type="submit" class="btn btn-success btn-lg" value="Share">
+    </form>
+
+     {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %} {% endblock %}
+
+    {% endfor %}
+  </div>
+</div> -->
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('input.comment').bind('click', function() {
+            $.getJSON('/profile',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+
+<div class="container">
+
+  <div class="profile">
+
+    <div class="profile-image">
+
+      <img src="{{profile.profile_pic.url}}" class=" img img-responsive" >
+
+    </div>
+
+    <div class="profile-user-settings">
+
+      <h1 class="profile-user-name">{{profile.username}}</h1>
+
+      <button class="btn profile-edit-btn">Edit Profile</button>
+
+      <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+
+    </div>
+
+    <div class="profile-stats">
+
+      <ul>
+        <li><span class="profile-stat-count">{{post_number}}</span> posts</li>
+        <li><span class="profile-stat-count">0</span> followers</li>
+        <li><span class="profile-stat-count">0</span> following</li>
+      </ul>
+
+    </div>
+
+    <div class="profile-bio">
+
+      <p><span class="profile-real-name">{{profile.name}}<br></span>{{profile.bio}}️</p>
+
+    </div>
+
+  </div>
+  <!-- End of profile section -->
+
+</div>
+<!-- End of container -->
+
+</header>
+
+<main>
+
+<div class="container">
+
+  <div class="gallery">
+    {% for post in posts %}
+
+    <div class="gallery-item" tabindex="0">
+
+
+      <img src="{{post.post.url}}?w=500&h=500&fit=crop" class="gallery-image" alt="">
+      <p>{{post.post.url}}</p>
+      <div class="gallery-item-info">
+
+        <ul>
+          <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
+          <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2
+    </div>
+
+  </div>
+  {%endfor%}
+
+  <div class="gallery-item" tabindex="0">
+
+				<img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
+
+				<div class="gallery-item-type">
+
+					<span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+
+				</div>
+
+				<div class="gallery-item-info">
+
+					<ul>
+						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 42</li>
+						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="gallery-item" tabindex="0">
+
+				<img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop" class="gallery-image" alt="">
+
+				<div class="gallery-item-type">
+
+					<span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
+
+				</div>
+
+				<div class="gallery-item-info">
+
+					<ul>
+						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 38</li>
+						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="gallery-item" tabindex="0">
+
+				<img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
+
+				<div class="gallery-item-type">
+
+					<span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+
+				</div>
+
+				<div class="gallery-item-info">
+
+					<ul>
+						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 47</li>
+						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+					</ul>
+
+				</div>
+
+			</div>
+    </div>
+  <!-- End of gallery -->
+
+  <div class="loader"></div>
+
+</div>
+<!-- End of container -->
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -14,10 +14,18 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+from django.conf import settings
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+#Email configurations remember to install python-decouple
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -47,7 +55,9 @@ else:
        'default': dj_database_url.config(
            default=config('DATABASE_URL')
        )
+
    }
+
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
@@ -66,6 +76,10 @@ INSTALLED_APPS = [
     'clone',
     'bootstrap3',
     'bootstrap4',
+    'tinymce',
+    'location_field.apps.DefaultConfig',
+    'django.contrib.gis',
+
 ]
 
 MIDDLEWARE = [
@@ -99,7 +113,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'instagram.wsgi.application'
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -131,6 +144,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+ACCOUNT_ACTIVATION_DAYS = 5 #5 Day user account activation window before deactivation
+
 
 
 # Static files (CSS, JavaScript, Images)

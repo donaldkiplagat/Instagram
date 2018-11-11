@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{{block.super}}
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/profile.css">
+  <link rel="stylesheet" href="../static/css/timeline.css">
+</head>
+
+
+
+<div class="container">
+<!-- <div class="row"> -->
+
+
+
+{% for post in posts %}
+<div class="gallery-item">
+
+<div class="card" style="width: 75rem;">
+      <h4>{{post.username}}</h4>
+      <p>{{post.location}}</p>
+
+      <img src="{{post.post.url}}?w=800&h=1000&fit=crop" class="gallery-image">
+  <div class="card-body">
+    <h5 class="card-title">{{post.likes}} likes</h5>
+    <p class="card-text">{{post.username}} {{post.caption |truncatechars:20}}</p>
+  </div>
+</div>
+</div>
+{% endfor %}
+
+<!-- </div> -->
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Account</title>
+
+    {% endif %}
+
+    {% block styles %}
+      {% bootstrap_css%}
+    {% endblock %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
+
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- {% bootstrap_javascript% } -->
+    {% endblock %}
+
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{{user}},
+
+Thanks for signing up with Instagram! This is your key in order to activate your account: {{activation_key}}.
+
+If account isn't activated before {{expiration_days}} days then it shall be deactivated.
+
+Follow this link to activate your account : {{site}}/accounts/activate/{{activation_key}}
+
+Have fun and don't hesitate to contact us with your feedback.
+
+With Regards,
+Instagram Team
