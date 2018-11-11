@@ -60,14 +60,30 @@ def profile(request):
     current_user = request.user
     current_user_id=request.user.id
     print(current_user)
-    print(current_user_id)
+    # print(current_user_id)
+
+    post_id = None
+    if request.method == 'GET':
+        post_id = request.GET.get('post_id')
+
+    likes = 0
+    if post_id:
+        post = Post.objects.get(id=int(post_id))
+        if post:
+            likes = post.likes + 1
+            post.likes =  likes
+            post.save()
+            print(likes)
+
+        return redirect('profile.html')
+
     try:
         profile = Profile.objects.get(username=current_user)
         posts = Post.objects.filter(username_id=current_user_id)
         title = profile.name
         username = profile.username
         post_number= len(posts)
-        print(post_number)
+        # print(post_number)
 
 
         if request.method =='POST':
@@ -117,3 +133,20 @@ def explore(request):
     posts = Post.objects.all()
 
     return render(request,"explore.html",{"posts":posts})
+
+
+@login_required(login_url='/accounts/login/')
+def like(request):
+    post_id = None
+    if request.method == 'GET':
+        post_id = request.GET.get('post_id')
+
+    likes = 0
+    if post_id:
+        post = Post.objects.get(id=int(post_id))
+        if post:
+            likes = post.likes + 1
+            post.likes =  likes
+            post.save()
+            print(likes)
+    return HttpResponse(likes)

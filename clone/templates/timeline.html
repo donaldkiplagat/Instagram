@@ -14,11 +14,9 @@
 
 
 <div class="container">
-<!-- <div class="row"> -->
-
-
 
 {% for post in posts %}
+<div class="col-md-10 col-lg-10">
 <div class="gallery-item">
 
 <div class="card" style="width: 75rem;">
@@ -34,14 +32,17 @@
   <div class="card-body">
     <div class="card-footer-section">
     <h5 class="card-title username">{{post.likes}} likes</h5>
-    <p class="card-text username">{{post.username}} <span class="caption"> {{post.caption |truncatechars:20}}</span></p>
+    <p class="card-text username">{{post.username}} <span class="caption"> {{post.caption|truncatechars:80}}</span></p>
     <br>
   </div>
   </div>
 </div>
 </div>
+</div>
+
+
+
 {% endfor %}
 
-<!-- </div> -->
 </div>
 {% endblock %}

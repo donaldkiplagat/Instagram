@@ -15,14 +15,18 @@ body {
   right:50px;
   outline: none;
 }
-.modal-content{
+.modal-footer{
+  text-align: left;
+}
+/* .modal-content{
   position: fixed;
   width:120%;
   right:90px;
-}
+} */
 .username{
   font-weight: bold;
   margin-bottom: -2px;
+
 }
 .location{
   font-weight: 20;
@@ -30,4 +34,7 @@ body {
 .custom-card-header{
   margin-top: 4px;
   margin-bottom: 4px;
+}
+.caption{
+  font-weight: normal;
 }
