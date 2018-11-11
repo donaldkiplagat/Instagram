@@ -63,7 +63,8 @@ img {
 /* Profile Section */
 
 .profile {
-    padding: 5rem 0;
+    padding: 2rem 0;
+     
 }
 
 .profile::after {
@@ -99,7 +100,8 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: -2em;
+    margin-right: -3.5em;
+    margin-left: -3em;
     border-radius: 50%;
 }
 .modal-image img {

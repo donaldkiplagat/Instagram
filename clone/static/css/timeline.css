@@ -18,3 +18,9 @@
     color: black;
     cursor: pointer;
 }
+.card-footer-section{
+  margin-left: 1rem;
+}
+.caption{
+  font-weight: normal;
+}

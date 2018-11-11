@@ -32,8 +32,11 @@
 
       <img src="{{post.post.url}}?w=800&h=1000&fit=crop" class="gallery-image">
   <div class="card-body">
-    <h5 class="card-title">{{post.likes}} likes</h5>
-    <p class="card-text">{{post.username}} {{post.caption |truncatechars:20}}</p>
+    <div class="card-footer-section">
+    <h5 class="card-title username">{{post.likes}} likes</h5>
+    <p class="card-text username">{{post.username}} <span class="caption"> {{post.caption |truncatechars:20}}</span></p>
+    <br>
+  </div>
   </div>
 </div>
 </div>

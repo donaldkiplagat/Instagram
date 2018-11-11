@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../static/css/profile.css">
 
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 </head>
 
@@ -49,7 +49,7 @@
     <div class="profile-bio">
 
       <p><span class="profile-real-name">{{profile.name}}</span></p>
-      <p style="white-space:pre-wrap;">{{profile.bio}}</p>
+      <p style="white-space:pre-wrap;">{{profile.bio | safe}}</p>
 
     </div>
 
@@ -71,13 +71,12 @@
 
     <div class="gallery-item" tabindex="0" data-toggle="modal" data-target="#{{post.id}}">
 
-
       <img src="{{post.post.url}}?w=500&h=500&fit=crop" class="gallery-image">
       <div class="gallery-item-info">
-
         <ul>
           <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
           <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i>2</li>
+        </ul>
     </div>
 
   </div>
@@ -115,11 +114,11 @@
     </div>
   </div>
 
-  {%endfor%}
+  {% endfor%}
 
 
 
-			<div class="gallery-item" tabindex="0">
+			<!-- <div class="gallery-item" tabindex="0">
 
 				<img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
 
@@ -138,11 +137,11 @@
 
 				</div>
 
-			</div>
+			</div> -->
     </div>
   <!-- End of gallery -->
 
-  <!-- <div class="loader"></div> -->
+  <div class="loader"></div>
 
 </div>
 <!-- End of container -->

@@ -43,7 +43,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.username = current_user
             post.profile_pic = profile.profile_pic
-            
+
             post.likes=0
 
             post.save()
@@ -64,7 +64,8 @@ def profile(request):
     try:
         profile = Profile.objects.get(username=current_user)
         posts = Post.objects.filter(username_id=current_user_id)
-
+        title = profile.name
+        username = profile.username
         post_number= len(posts)
         print(post_number)
 
@@ -86,7 +87,7 @@ def profile(request):
         return redirect('edit-profile')
 
 
-    return render(request,"profile.html",{"profile":profile,"posts":posts,"form":form,"post_number":post_number})
+    return render(request,"profile.html",{"profile":profile,"posts":posts,"form":form,"post_number":post_number,"title":title,"username":username})
 
 
 @login_required(login_url='/accounts/login/')
