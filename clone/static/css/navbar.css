@@ -7,3 +7,30 @@
   margin-top: 8px;
   font-size: 24px;
 }
+.navbar-form{
+  margin-top:20px;
+}
+.form-control{
+  margin-left: 20%;
+}
+input{
+  width:50px;
+  height:2px;
+  color:#999;
+  font-weight:
+}
+.navbar-brand{
+  margin-top: 8px;
+
+}
+.instagramlogo{
+  margin-top:1px;
+}
+.bar-pipe{
+  padding: 0.3em;
+  border-right: 1px solid black;
+  position: fixed;
+  top:15px;
+  height: 30px;
+
+}

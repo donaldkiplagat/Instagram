@@ -2,6 +2,16 @@
   margin-left: auto;
   margin-right: auto;
 } */
-body{
-  background-color: #fafafa;
+
+body {
+    font-family: "Open Sans", Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #fafafa;
+    color: #262626;
+    padding-bottom: 3rem;
+}
+.modal {
+  top:20%;
+  right:50px;
+  outline: none;
 }
