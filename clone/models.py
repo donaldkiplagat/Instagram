@@ -4,10 +4,6 @@ from tinymce.models import HTMLField
 import datetime as dt
 
 
-from django.contrib.gis.db import models
-from django.contrib.gis.geos import Point
-from location_field.models.spatial import LocationField
-
 Gender=(
     ('Male','Male'),
     ('Female','Female'),
@@ -30,9 +26,7 @@ class Post(models.Model):
     post = models.ImageField(upload_to='posts/')
     likes = models.IntegerField()
 
-    # city = models.CharField(max_length=255)
     location = models.ForeignKey(Location,on_delete=models.CASCADE)
-    # objects = models.GeoManager()
 
     post_date=models.DateTimeField(auto_now_add=True)
 

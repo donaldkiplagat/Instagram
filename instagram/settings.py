@@ -77,9 +77,6 @@ INSTALLED_APPS = [
     'bootstrap3',
     'bootstrap4',
     'tinymce',
-    'location_field.apps.DefaultConfig',
-    'django.contrib.gis',
-
 ]
 
 MIDDLEWARE = [
