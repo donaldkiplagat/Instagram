@@ -136,7 +136,9 @@ img {
   -moz-border-radius: 100px;
 }
 
-
+.panel{
+  margin: auto;
+}
 
 
 

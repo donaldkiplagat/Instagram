@@ -9,14 +9,13 @@
 
   <link rel="stylesheet" href="../static/css/profile.css">
   <link rel="stylesheet" href="../static/css/base.css">
-
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 
 </head>
 
 
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     {% if users %}
     <h2> Found {{users|length}} users with the search term "{{message}}"</h2>
     {% else %}
@@ -25,20 +24,25 @@
   </div>
 
   {% if users %}
-  <div class="gallery">
-    {% for user in users %}
-      <div class="gallery-item" tabindex="0" data-toggle="modal" data-target="#{{post.id}}">
-        <div class="profile-image">
-          <img src="{{user.profile_pic.url}}" class=" img img-responsive" ><br>
+  <div class="text-center">
+    <div class="panel" style="width: 40rem;">
+      <!-- <div class="custom-card-header"> -->
+      <div class="panel-body">
+        {% for user in users%}
+        <!-- <div class="custom-card-header"> -->
 
+        <div class="users-image">
+          <img src="{{user.profile_pic.url}}?w=50&h=50&fit=crop" class="gallery-image" alt=""  width=8 height=8>
+          <div class="search-username-center">
+          <p class="username profile-username" style="margin:auto;">{{user.username}}</p>
         </div>
+        </div>
+        <!-- </div> -->
 
-  </div>
-  <h1 class="search-username">{{user.username}}</h1>
+        {% endfor %}
 
-
-
-    {% endfor %}
+      </div>
+    </div>
   </div>
     {%endif %}
 </div>

@@ -36,6 +36,11 @@ body {
 .search-username{
   color:black;
 }
+.profile-username{
+  font-size: 18px;
+  margin-bottom: -2px;
+  font-weight: 559;
+}
 .location{
   font-weight: 20;
 }
@@ -45,4 +50,22 @@ body {
 }
 .caption{
   font-weight: normal;
+}
+.users-image img {
+  width: 200px;
+  height: 200px;
+  /* background-image: url('http://strawberry-fest.org/wp-content/uploads/2012/01/Coca-Cola-logo.jpg'); */
+  background-size: cover;
+  display: block;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  margin-left: 8em;
+  margin-top: 1em;
+}
+.search-username-center{
+  text-align: center;
+  margin: auto;
+  margin-left:4em;
+
 }
