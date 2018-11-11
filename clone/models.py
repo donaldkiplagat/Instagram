@@ -24,6 +24,7 @@ class Location(models.Model):
 
 
 class Post(models.Model):
+    profile_pic = models.ImageField(upload_to = 'profilepics/')
     caption = models.CharField(max_length=3000)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     post = models.ImageField(upload_to='posts/')

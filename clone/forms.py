@@ -9,7 +9,7 @@ class LocationForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model=Post
-        exclude=['username','post_date','likes']
+        exclude=['username','post_date','likes','profile_pic']
 
 
 class ProfileForm(forms.ModelForm):

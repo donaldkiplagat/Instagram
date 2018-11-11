@@ -10,6 +10,8 @@ urlpatterns=[
     url(r'^new/location$',views.new_location, name='new-location'),
     url(r'^profile/',views.profile, name='profile'),
     url(r'^edit/profile$',views.edit_profile, name='edit-profile'),
+    url(r'^explore/',views.explore, name='explore'),
+
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

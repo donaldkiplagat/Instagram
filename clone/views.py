@@ -11,7 +11,6 @@ import datetime as dt
 def timeline(request):
     posts= Post.objects.all()
 
-
     return render(request,'timeline.html',{"posts":posts})
 
 def search_results(request):
@@ -36,11 +35,15 @@ def new_location(request):
 @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
+    profile = Profile.objects.get(username=current_user)
+
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.username = current_user
+            post.profile_pic = profile.profile_pic
+            
             post.likes=0
 
             post.save()
@@ -107,3 +110,9 @@ def comment():
 
 
     return "nothing"
+
+@login_required(login_url='/accounts/login/')
+def explore(request):
+    posts = Post.objects.all()
+
+    return render(request,"explore.html",{"posts":posts})

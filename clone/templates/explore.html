@@ -18,44 +18,6 @@
 
 <div class="container">
 
-  <div class="profile">
-
-    <div class="profile-image">
-
-      <img src="{{profile.profile_pic.url}}" class=" img img-responsive" >
-
-    </div>
-
-    <div class="profile-user-settings">
-
-      <h1 class="profile-user-name">{{profile.username}}</h1>
-
-      <button class="btn profile-edit-btn">Edit Profile</button>
-
-      <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
-
-    </div>
-
-    <div class="profile-stats">
-
-      <ul>
-        <li><span class="profile-stat-count">{{post_number}}</span> posts</li>
-        <li><span class="profile-stat-count">0</span> followers</li>
-        <li><span class="profile-stat-count">0</span> following</li>
-      </ul>
-
-    </div>
-
-    <div class="profile-bio">
-
-      <p><span class="profile-real-name">{{profile.name}}</span></p>
-      <p style="white-space:pre-wrap;">{{profile.bio}}</p>
-
-    </div>
-
-  </div>
-  <!-- End of profile section -->
-
 </div>
 <!-- End of container -->
 
@@ -98,10 +60,6 @@
               <img src="{{post.post.url}}?w=800&h=1000&fit=crop" class="gallery-image" alt="">
             </div>
             <div class="col-md-2 detailsection">
-              <div class="modal-image">
-                <img src="{{post.profile_pic.url}}?w=50&h=50&fit=crop" class="gallery-image" alt=""  width=10 height=10>
-              </div>
-
               <p>{{post.username}}</p>
               <p>{{post.location}}</p>
             </div>

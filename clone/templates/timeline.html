@@ -22,8 +22,13 @@
 <div class="gallery-item">
 
 <div class="card" style="width: 75rem;">
-      <h4>{{post.username}}</h4>
-      <p>{{post.location}}</p>
+  <div class="custom-card-header">
+  <div class="modal-image">
+    <img src="{{post.profile_pic.url}}?w=50&h=50&fit=crop" class="gallery-image" alt=""  width=8 height=8>
+  </div>
+      <p class="username">{{post.username}}</p>
+      <footer class="location">{{post.location}}</footer>
+  </div>
 
       <img src="{{post.post.url}}?w=800&h=1000&fit=crop" class="gallery-image">
   <div class="card-body">
