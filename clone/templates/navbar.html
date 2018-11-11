@@ -44,9 +44,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="col-md-2 col-lg-2">
-      <form class="navbar-form navbar-left">
+      <form class="navbar-form navbar-left" action="{% url 'search_results'%}">
              <div class="form-group">
-               <input type="text" class="form-control" placeholder="Search">
+               <input type="text" class="form-control" placeholder="Search" name="user">
 
              </div>
 

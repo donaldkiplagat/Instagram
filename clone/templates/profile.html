@@ -32,7 +32,7 @@
 
       <button class="btn profile-edit-btn">Edit Profile</button>
 
-      <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+      <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true" data-toggle="modal" data-target="#settings"></i></button>
 
     </div>
 
@@ -55,6 +55,24 @@
 
   </div>
   <!-- End of profile section -->
+
+  <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content settings-modal">
+
+        <div class="modal-body">
+          <div class="text-center">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><button class="btn btn-primary btn-lg">Change Password</button></li>
+              <li class="list-group-item"><button class="btn btn-primary btn-lg">Dark Theme</button></li>
+              <li class="list-group-item"><button class="btn btn-primary btn-lg">Log Out</button></li>
+            </ul>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 </div>
 <!-- End of container -->
@@ -104,9 +122,6 @@
         <div class="modal-footer">
           <p class="card-title username like"  id="likes-{{forloop.counter0}}" data-comid="{{post.id}}" >{{post.likes}} likes</p>
           <p class="username">{{post.username}} <span class="caption">{{post.caption|truncatechars:300 |safe }}</span></p>
-
-
-          <p>{{post.likes}}</p>
 
         </div>
       </div>

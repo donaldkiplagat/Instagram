@@ -12,6 +12,8 @@ urlpatterns=[
     url(r'^edit/profile$',views.edit_profile, name='edit-profile'),
     url(r'^explore/',views.explore, name='explore'),
     url(r'^like/$', views.like, name='like'),
+    url(r'^search/',views.search_results, name='search_results'),
+
 ]
 
 if settings.DEBUG:

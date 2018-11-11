@@ -15,6 +15,8 @@
 
 <div class="container">
 
+
+<div class="row">
 {% for post in posts %}
 <div class="col-md-10 col-lg-10">
 <div class="gallery-item">
@@ -39,10 +41,29 @@
 </div>
 </div>
 </div>
-
-
-
 {% endfor %}
 
+<div class="col-md-2">
+<div class="panel" style="width: 30rem;">
+  <!-- <div class="custom-card-header"> -->
+  <div class="panel-body">
+    {% for profile in profiles%}
+    <!-- <div class="custom-card-header"> -->
+
+    <div class="users-image">
+      <img src="{{profile.profile_pic.url}}?w=50&h=50&fit=crop" class="gallery-image" alt=""  width=8 height=8>
+      <p class="username profile-username">{{profile.username}}</p>
+    </div>
+    <!-- </div> -->
+
+    {% endfor %}
+
+  </div>
+</div>
+
+</div>
+
+
+<!-- </div> -->
 </div>
 {% endblock %}

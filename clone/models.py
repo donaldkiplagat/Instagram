@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
+from django.db.models import Q
+
 import datetime as dt
 
 
@@ -44,6 +46,12 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.username
+
+    @classmethod
+    def search_profile(cls,search_term):
+        profiles = cls.objects.filter(Q(username__username=search_term) | Q(name__icontains=search_term))
+
+        return profiles
 
 
 class Comment(models.Model):

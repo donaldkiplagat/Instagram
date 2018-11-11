@@ -10,8 +10,9 @@ import datetime as dt
 # Create your views here.
 def timeline(request):
     posts= Post.objects.all()
+    profiles= Profile.objects.all()
 
-    return render(request,'timeline.html',{"posts":posts})
+    return render(request,'timeline.html',{"posts":posts,"profiles":profiles})
 
 def search_results(request):
     return render(request,'search.html')
@@ -150,3 +151,16 @@ def like(request):
             post.save()
             print(likes)
     return HttpResponse(likes)
+
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+    if 'user' in request.GET and request.GET["user"]:
+        search_term = request.GET.get("user")
+        searched_users = Profile.search_profile(search_term)
+        message=f"{search_term}"
+
+        return render(request,'search.html',{"message":message,"users":searched_users})
+
+    else:
+        message="You haven't searched for any term"
+        return render(request,'search.html',{"message":message})
