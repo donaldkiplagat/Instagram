@@ -1,5 +1,6 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
+{% load static%}
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -16,6 +17,7 @@
       {% bootstrap_css%}
     {% endblock %}
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
   </head>
   <body>
@@ -27,4 +29,6 @@
     {% endblock %}
 
   </body>
+
+
 </html>

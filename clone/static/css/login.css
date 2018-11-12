@@ -1,0 +1,99 @@
+.phones{
+  background-image: url(../img/loginphones.png);
+  align-self: center;
+  background-position: 0 0;
+  background-size: 454px 618px;
+  flex-basis:454px;
+  height:618px;
+  margin-left: -35px;
+  margin-right: -15px;
+
+}
+
+.phone-section{
+  margin: auto;
+  margin-top: 10%;
+}
+.form-section{
+  margin: auto;
+  margin-top: 15%;
+}
+.logo-header{
+  text-align: center;
+}
+body {
+    font-family: "Open Sans", Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #fafafa;
+    color: #262626;
+    padding-bottom: 3rem;
+}
+.login-button{
+  width:80%;
+}
+
+.form-control{
+  display: block;
+  width: 80%;
+  height: 38px;
+  padding: 2px 2px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  margin: auto;
+}
+label{
+  display: none;
+}
+.screen-image{
+    margin:auto;
+    margin-top: 19%;
+    opacity: 10;
+    top: 0;
+    margin-left:35%;
+    border: 2px solid black;
+
+    height:455px;
+    /* visibility: hidden; */
+    /* width: 240px; */
+}
+.footer{
+  margin-top: 15%;
+  color:blue;
+  display: inline-flex;
+
+}
+.footer-links{
+  padding-right: 12px;
+  color: MidnightBlue;
+  font-weight: bold;
+}
+a{
+  color:MidnightBlue;
+}
+a:link {
+    text-decoration: none;
+    color:MidnightBlue;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.copyright{
+  color:Gray;
+  padding-left: 15px;
+}

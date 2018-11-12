@@ -1,0 +1,60 @@
+.form-control{
+  display: block;
+  width: 80%;
+  height: 38px;
+  padding: 2px 2px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  margin: auto;
+}
+.logo-header{
+  text-align: center;
+}
+.form-section{
+  margin: auto;
+  margin-top: 3.6%;
+}
+.sign-up-button{
+  width:80%;
+}
+.footer{
+  margin-top: 8%;
+  color:blue;
+  display: inline-flex;
+
+}
+.footer-links{
+  padding-right: 12px;
+  color: MidnightBlue;
+  font-weight: bold;
+}
+a{
+  color:MidnightBlue;
+}
+a:link {
+    text-decoration: none;
+    color:MidnightBlue;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.copyright{
+  color:Gray;
+  padding-left: 15px;
+}

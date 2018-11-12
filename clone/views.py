@@ -14,10 +14,6 @@ def timeline(request):
 
     return render(request,'timeline.html',{"posts":posts,"profiles":profiles})
 
-def search_results(request):
-    return render(request,'search.html')
-
-
 @login_required(login_url='/accounts/login/')
 def new_location(request):
     if request.method =='POST':
@@ -164,3 +160,18 @@ def search_results(request):
     else:
         message="You haven't searched for any term"
         return render(request,'search.html',{"message":message})
+
+@login_required(login_url='/accounts/login/')
+def userprofile(request,username):
+    current_user=request.user
+    try:
+        all_posts=Post.objects.all()
+        profile = Profile.objects.get(username=all_post.username)
+
+        posts = Post.objects.filter(username=profile.username)
+
+
+
+    except:
+        raise ObjectDoesNotExist()
+    return render(request,"user-profile.html",{"profile":profile,"posts":posts})

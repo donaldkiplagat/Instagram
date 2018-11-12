@@ -1,33 +1,82 @@
 {% extends "registration/base.html" %}
 {% load bootstrap3%}
+{% load static %}
 
 {% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 
+</head>
 <div class="container">
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4"></div>
-    <div class="col-md-4">
+
+    <div class="col-md-4 form-section">
       {% if form.errors %}
         <p>Some information might be incorrect</p>
       {% endif %}
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="text-center">Sign Up</h3>
-        </div>
+
         <div class="panel-body">
+          <div class="logo-header">
+            <img alt="Brand" src="{% static 'img/brand.png' %}" height=70 >
+          </div>
           <form action="/accounts/register/" method="post">
+
             {% csrf_token%}
             {% bootstrap_form form %}
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+            <div class="form-group text-center">
+              <input type="submit" class="btn btn-primary sign-up-button" value="Sign Up">
             </div>
             <input type="hidden" name="next" value="{{next}}">
+
+
           </form>
         </div>
       </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+          <p>Have an account? <span><a class="" href="/accounts/login">Login</a></span></p>
+        </div>
+      </div>
+
+      <div class="row app-downloads text-center">
+        <div class='col-md-12'>
+          <h5>Get the App</h5>
+        </div>
+        <div class="col-md-6 col-lg-6 app-store">
+          <a href="https://itunes.apple.com/app/instagram/id389801252?mt=8&vt=lo">
+          <img class="Rt8TI" alt="Available on the App Store" src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png"height=40>
+        </a>
+        </div>
+        <div class="col-md-6 col-lg-6 play-store">
+          <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DsignupPage%26ig_mid%3DW7TC9gAEAAGv8_i1DKFn6cdx04Jl%26utm_content%3Dlo%26utm_medium%3Dbadge">
+          <img class="Rt8TI" alt="Available on Google Play" src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" height=40>
+        </a>
+        </div>
+      </div>
     </div>
+
+
     <div class="col-md-4"></div>
+  </div>
+  <div class="text-center">
+    <div class="footer">
+      <a class="footer-links" href="https://www.instagram.com/about/us/">ABOUT US</a>
+      <a class="footer-links" href="https://help.instagram.com/">SUPPORT</a>
+      <a class="footer-links" href="https://instagram-press.com/">PRESS</a>
+      <a class="footer-links" href="https://www.instagram.com/developer/">API</a>
+      <a class="footer-links" href="https://www.instagram.com/about/jobs/">JOBS</a>
+      <a class="footer-links" href="https://help.instagram.com/519522125107875">PRIVACY</a>
+      <a class="footer-links" href="https://help.instagram.com/581066165581870">TERMS</a>
+      <a class="footer-links" href="https://www.instagram.com/explore/locations/">DIRECTORY</a>
+      <a class="footer-links" href="https://www.instagram.com/directory/profiles/">PROFILES</a>
+      <a class="footer-links" href="https://www.instagram.com/directory/hashtags/">HASHTAGS</a>
+      <p class="copyright">© 2018 INSTAGRAM</p>
+
+    </div>
   </div>
 </div>
 
