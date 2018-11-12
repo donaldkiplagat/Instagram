@@ -13,7 +13,7 @@ urlpatterns=[
     url(r'^explore/',views.explore, name='explore'),
     url(r'^like/$', views.like, name='like'),
     url(r'^search/',views.search_results, name='search_results'),
-    url(r'^user-profile/(?P<username>.+)',views.userprofile,name='user-profile'),
+    url(r'^user-profile/(\d+)',views.userprofile,name='user-profile'),
 
 ]
 

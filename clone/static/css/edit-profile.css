@@ -1,0 +1,40 @@
+.form-control{
+  display: block;
+  width: 80%;
+  height: 38px;
+  padding: 2px 2px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  margin: auto;
+}
+.panel{
+  margin: auto;
+  width:40%;
+  height:40%;
+  margin-top: 4%;
+}
+.panel-body{
+    margin: auto;
+    text-align: center;
+}
+.mceEditor{
+  text-align: center;
+  margin: auto;
+  margin-left: 10%;
+  /* float: right; */
+  display: flex;
+  width:800px;
+}
+#id_profile_pic{
+  margin: auto;
+}
+body {
+  background-color: #fafafa;
+
+}

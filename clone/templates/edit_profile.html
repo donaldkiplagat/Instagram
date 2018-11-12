@@ -12,19 +12,40 @@
   {{form.media}}
 
 {% block styles %} {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/edit-profile.css' %}">
 {% endblock %}
 
 </head>
 
 <body>
+  <div class="panel panel-default">
 
-  <form  action="{%url 'edit-profile'%}" method="post" enctype="multipart/form-data">
+    <div class="panel-body">
+      <div class="logo-header">
+        <img alt="Brand" src="{% static 'img/brand.png' %}" height=70 >
+      </div>
+      <form action="{%url 'edit-profile'%}" method="post" enctype="multipart/form-data">
+
+        {% csrf_token%}
+        {% bootstrap_form form %}
+        <div class="form-group text-center">
+          <input type="submit" class="btn btn-success btn-lg" action="{% url 'profile'%}"value="Share">
+        </div>
+        <!-- <input type="hidden" name="next" value="{{next}}"> -->
+
+
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- <form  action="{%url 'edit-profile'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
     {% bootstrap_form form%}
     <input type="submit" class="btn btn-success btn-lg" action="{% url 'profile'%}"value="Share">
-  </form>
+  </form> -->
 
    {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -162,11 +162,11 @@ def search_results(request):
         return render(request,'search.html',{"message":message})
 
 @login_required(login_url='/accounts/login/')
-def userprofile(request,username):
+def userprofile(request,profile_id):
     current_user=request.user
     try:
         all_posts=Post.objects.all()
-        profile = Profile.objects.get(username=all_post.username)
+        profile = Profile.objects.get(username=all_post.id)
 
         posts = Post.objects.filter(username=profile.username)
 
