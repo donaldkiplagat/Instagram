@@ -5,7 +5,6 @@ from django.db.models import Q
 
 import datetime as dt
 
-
 Gender=(
     ('Male','Male'),
     ('Female','Female'),
