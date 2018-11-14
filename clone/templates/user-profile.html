@@ -122,10 +122,47 @@
           <p class="card-title username like"  id="likes-{{forloop.counter0}}" data-comid="{{post.id}}" >{{post.likes}} likes</p>
           <p class="username">{{post.username}} <span class="caption">{{post.caption|truncatechars:300 |safe }}</span></p>
 
+          <form method="post" enctype="multipart/form-data" id='comment{{post.id}}'>
+            {% csrf_token %}
+            {% bootstrap_form form%}
+        </form>
+        <div id="card{{post.id}}" class="mt-2">
+               {%for comment in comments%}
+                   {%if comment.post == post.id%}
+                   <p>
+                       <strong>{{comment.user.username}}</strong> {{comment.comment}}
+                   </p>
+                   {%endif%}
+               {%endfor%}
+        </div>
+
         </div>
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+
+    $('#comment{{post.id}}').submit(function(event) {
+        comment = $(this).find('#id_comment').val();
+        post = {{post.id}};
+        $.ajax({
+            url: '/ajax/comment/',
+            data: {
+              'comment': comment,
+              'post': post
+            },
+            dataType: 'json',
+            success: function (data) {
+                $('#card{{image.id}}').append(
+                    `<p> <strong>${data.recent_comment_user}</strong> ${data.recent_comment}</p>`
+                );
+                $('#comment{{post.id}}')[0].reset();
+            }
+          });
+          event.preventDefault()
+     });
+</script>
 
   {% endfor%}
 

@@ -53,11 +53,11 @@ class Profile(models.Model):
 
         return profiles
 
-
 class Comment(models.Model):
     comment = models.CharField(max_length=300)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
-    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    # post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    post = models.IntegerField()
 
     # def __str__(self):
     #     return self.username
@@ -65,4 +65,3 @@ class Comment(models.Model):
 class Followers(models.Model):
     username= models.ForeignKey(User,on_delete=models.CASCADE)
     user = models.CharField(max_length=100)
-    

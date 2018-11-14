@@ -139,7 +139,13 @@ img {
 .panel{
   margin: auto;
 }
-
+.commentformsize{
+  width:80%;
+  text-align: center;
+}
+.control-label{
+  display: none;
+}
 
 
 

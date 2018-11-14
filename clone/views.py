@@ -6,12 +6,17 @@ from .models import Post,Profile,Comment
 from .forms import PostForm,LocationForm,ProfileForm,CommentForm
 from decouple import config,Csv
 import datetime as dt
+from django.http import JsonResponse
+import json
+from django.db.models import Q
+
 
 # Create your views here.
 def timeline(request):
+    current_user=request.user
     posts= Post.objects.all()
+    # profiles= Profile.objects.filter(~Q(username=current_user)).all()
     profiles= Profile.objects.all()
-
     return render(request,'timeline.html',{"posts":posts,"profiles":profiles})
 
 @login_required(login_url='/accounts/login/')
@@ -56,6 +61,9 @@ def new_post(request):
 def profile(request):
     current_user = request.user
     current_user_id=request.user.id
+    form=CommentForm()
+    comments=Comment.objects.all()
+    comment_number=len(comments)
     print(current_user)
     # print(current_user_id)
 
@@ -82,25 +90,11 @@ def profile(request):
         post_number= len(posts)
         # print(post_number)
 
-
-        if request.method =='POST':
-            form=CommentForm(request.POST,request.FILES)
-            if form.is_valid():
-                comment=form.save(commit=False)
-                comment.username=current_user
-                comment.post = current_user
-
-                comment.save()
-
-            return redirect('profile')
-        else:
-            form = CommentForm()
-
     except ObjectDoesNotExist:
         return redirect('edit-profile')
 
 
-    return render(request,"profile.html",{"profile":profile,"posts":posts,"form":form,"post_number":post_number,"title":title,"username":username})
+    return render(request,"profile.html",{"profile":profile,"posts":posts,"form":form,"post_number":post_number,"title":title,"username":username,"comments":comments,"comment_number":comment_number})
 
 
 @login_required(login_url='/accounts/login/')
@@ -118,12 +112,24 @@ def edit_profile(request):
 
     return render(request,'edit_profile.html',{"form":form})
 
-
-def comment():
+def comment(request):
     print("AJAX is working")
 
+    comment = request.GET.get('comment')
+    post = request.GET.get('post')
+    username = request.user
 
-    return "nothing"
+    comment = Comment(comment=comment,post=post,username=username)
+    comment.save()
+
+    recent_comment= f'{Comment.objects.all().last().comment}'
+    recent_comment_user = f'{Comment.objects.all().last().username}'
+    data= {
+        'recent_comment': recent_comment,
+        'recent_comment_user':recent_comment_user
+    }
+
+    return JsonResponse(data)
 
 @login_required(login_url='/accounts/login/')
 def explore(request):
@@ -162,16 +168,34 @@ def search_results(request):
         return render(request,'search.html',{"message":message})
 
 @login_required(login_url='/accounts/login/')
-def userprofile(request,profile_id):
+def userprofile(request,username):
     current_user=request.user
+    form =CommentForm()
+    comments=Comment.objects.all()
+
     try:
         all_posts=Post.objects.all()
-        profile = Profile.objects.get(username=all_post.id)
-
-        posts = Post.objects.filter(username=profile.username)
-
-
-
+        profile = Profile.objects.get(username=username)
+        posts = Post.objects.filter(username=username)
     except:
         raise ObjectDoesNotExist()
-    return render(request,"user-profile.html",{"profile":profile,"posts":posts})
+    return render(request,"user-profile.html",{"profile":profile,"posts":posts,"form":form,"comments":comments})
+
+
+@login_required(login_url='/accounts/login/')
+def change_profile(request,username):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            caption = form.save(commit=False)
+            caption.username = current_user
+            caption.save()
+        return redirect('index')
+    elif Profile.objects.get(username=current_user):
+        profile = Profile.objects.get(username=current_user)
+        form = ProfileForm(instance=profile)
+    else:
+        form = ProfileForm()
+
+    return render(request,'change_profile.html',{"form":form})

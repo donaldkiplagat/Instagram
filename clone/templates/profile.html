@@ -30,7 +30,7 @@
 
       <h1 class="profile-user-name">{{profile.username}}</h1>
 
-      <button class="btn profile-edit-btn">Edit Profile</button>
+      <button class="btn profile-edit-btn"><a href="{% url 'change_profile' profile.username %}" style="color:black;">Edit Profile</a></button>
 
       <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true" data-toggle="modal" data-target="#settings"></i></button>
 
@@ -63,9 +63,9 @@
         <div class="modal-body">
           <div class="text-center">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><button class="btn btn-primary btn-lg">Change Password</button></li>
-              <li class="list-group-item"><button class="btn btn-primary btn-lg">Dark Theme</button></li>
-              <li class="list-group-item"><button class="btn btn-primary btn-lg" href="{url 'logout'}">Log Out</button></li>
+              <!-- <li class="list-group-item"><button class="btn btn-primary btn-lg">Change Password</button></li> -->
+              <!-- <li class="list-group-item"><button class="btn btn-primary btn-lg">Dark Theme</button></li> -->
+              <li class="list-group-item"><button class="btn btn-primary btn-lg"><a href="{% url 'logout' %}" style="color:black;">Log Out</a></button></li>
             </ul>
         </div>
         </div>
@@ -95,7 +95,8 @@
       <div class="gallery-item-info">
         <ul>
           <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i>{{post.likes}}</li>
-          <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i>80</li>
+
+          <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i>{{comment_number}}</li>
         </ul>
     </div>
 
@@ -123,10 +124,57 @@
           <p class="card-title username like"  id="likes-{{forloop.counter0}}" data-comid="{{post.id}}" >{{post.likes}} likes</p>
           <p class="username">{{post.username}} <span class="caption">{{post.caption|truncatechars:300 |safe }}</span></p>
 
+
+        <div id="card{{post.id}}" class="mt-2">
+               {%for comment in comments%}
+                   {%if comment.post == post.id%}
+                   <p>
+                       <strong>{{comment.username.username}}</strong> {{comment.comment}}
+                   </p>
+                   {%endif%}
+               {%endfor%}
         </div>
+      </div>
+        <div class="modal-footer">
+
+        <div class="text-center">
+          <form method="post" enctype="multipart/form-data" id='comment{{post.id}}' class="commentformsize">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+          </form>
+        </div>
+      </div>
+
+
       </div>
     </div>
   </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+    $('#comment{{post.id}}').submit(function(event) {
+        comment = $(this).find('#id_comment').val();
+        post = {{post.id}};
+        $.ajax({
+            url: '/comment/',
+            data: {
+              'comment': comment,
+              'post': post
+            },
+            dataType: 'json',
+            success: function (data) {
+                $('#card{{image.id}}').append(
+                    `<p> <strong>${data.recent_comment_username}</strong> ${data.recent_comment}</p>`
+                );
+                $('#comment{{post.id}}')[0].reset();
+            }
+          });
+          event.preventDefault()
+     });
+</script>
+
 
   {% endfor%}
 
