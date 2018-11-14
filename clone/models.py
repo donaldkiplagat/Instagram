@@ -19,7 +19,6 @@ class Location(models.Model):
     class Meta:
         ordering = ['location']
 
-
 class Post(models.Model):
     profile_pic = models.ImageField(upload_to = 'profilepics/')
     caption = models.CharField(max_length=3000)
