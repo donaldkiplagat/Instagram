@@ -57,9 +57,6 @@ class Comment(models.Model):
     # post = models.ForeignKey(Post,on_delete=models.CASCADE)
     post = models.IntegerField()
 
-    # def __str__(self):
-    #     return self.username
-
 class Followers(models.Model):
     username= models.ForeignKey(User,on_delete=models.CASCADE)
     user = models.CharField(max_length=100)
