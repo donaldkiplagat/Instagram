@@ -45,33 +45,78 @@
   </div>
 
   <!-- Modal -->
+  <!-- Modal -->
   <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <!-- <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div> -->
+        <div class="modal-header">
+
+          <div class="custom-card-header">
+          <div class="modal-profile-image">
+            <img src="{{post.profile_pic.url}}?w=50&h=50&fit=crop" class="gallery-image" alt=""  width=8 height=8>
+          </div>
+              <p class="username">{{post.username}}</p>
+              <footer class="location">{{post.location}}</footer>
+          </div>
+
+        </div>
         <div class="modal-body">
-          <div class="row">
-            <div class="col-md-10">
-              <img src="{{post.post.url}}?w=800&h=1000&fit=crop" class="gallery-image" alt="">
-            </div>
-            <div class="col-md-2 detailsection">
-              <p>{{post.username}}</p>
-              <p>{{post.location}}</p>
-            </div>
+              <img src="{{post.post.url}}?w=800&h=1000&fit=crop" class="gallery-image like" id="likes-{{forloop.counter0}}" data-comid="{{post.id}}">
         </div>
+        <div class="modal-footer">
+          <p class="card-title username like"  id="likes-{{forloop.counter0}}" data-comid="{{post.id}}" >{{post.likes}} likes</p>
+          <p class="username">{{post.username}} <span class="caption">{{post.caption|truncatechars:300 |safe }}</span></p>
+
+
+        <div id="card{{post.id}}" class="mt-2">
+               {%for comment in comments%}
+                   {%if comment.post == post.id%}
+                   <p>
+                       <strong>{{comment.username.username}}</strong> {{comment.comment}}
+                   </p>
+                   {%endif%}
+               {%endfor%}
         </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div> -->
+      </div>
+        <div class="modal-footer">
+
+        <div class="text-center">
+          <form method="post" enctype="multipart/form-data" id='comment{{post.id}}' class="commentformsize">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+          </form>
+        </div>
+      </div>
+
+
       </div>
     </div>
   </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+    $('#comment{{post.id}}').submit(function(event) {
+        comment = $(this).find('#id_comment').val();
+        post = {{post.id}};
+        $.ajax({
+            url: '/comment/',
+            data: {
+              'comment': comment,
+              'post': post
+            },
+            dataType: 'json',
+            success: function (data) {
+                $('#card{{image.id}}').append(
+                    `<p> <strong>${data.recent_comment_username}</strong> ${data.recent_comment}</p>`
+                );
+                $('#comment{{post.id}}')[0].reset();
+            }
+          });
+          event.preventDefault()
+     });
+  </script>
 
   {%endfor%}
 

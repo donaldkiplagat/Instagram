@@ -17,7 +17,11 @@ def timeline(request):
     posts= Post.objects.all()
     # profiles= Profile.objects.filter(~Q(username=current_user)).all()
     profiles= Profile.objects.all()
-    return render(request,'timeline.html',{"posts":posts,"profiles":profiles})
+    form=CommentForm()
+    comments=Comment.objects.all()
+
+
+    return render(request,'timeline.html',{"posts":posts,"profiles":profiles,"form":form,"comments":comments})
 
 @login_required(login_url='/accounts/login/')
 def new_location(request):
@@ -134,8 +138,11 @@ def comment(request):
 @login_required(login_url='/accounts/login/')
 def explore(request):
     posts = Post.objects.all()
+    form=CommentForm()
+    comments=Comment.objects.all()
 
-    return render(request,"explore.html",{"posts":posts})
+
+    return render(request,"explore.html",{"posts":posts,"form":form,"comments":comments})
 
 
 @login_required(login_url='/accounts/login/')
@@ -168,15 +175,16 @@ def search_results(request):
         return render(request,'search.html',{"message":message})
 
 @login_required(login_url='/accounts/login/')
-def userprofile(request,username):
+def userprofile(request,profile_id):
     current_user=request.user
     form =CommentForm()
     comments=Comment.objects.all()
 
     try:
         all_posts=Post.objects.all()
-        profile = Profile.objects.get(username=username)
-        posts = Post.objects.filter(username=username)
+        profile = Profile.objects.get(id=profile_id)
+        prof_username = profile.username
+        posts = Post.objects.filter(username=prof_username)
     except:
         raise ObjectDoesNotExist()
     return render(request,"user-profile.html",{"profile":profile,"posts":posts,"form":form,"comments":comments})

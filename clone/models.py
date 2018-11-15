@@ -19,6 +19,13 @@ class Location(models.Model):
     class Meta:
         ordering = ['location']
 
+    def save_location(self):
+        self.save()
+
+    @classmethod
+    def delete_location(cls,location):
+        cls.objects.filter(location=location).delete()
+
 class Post(models.Model):
     profile_pic = models.ImageField(upload_to = 'profilepics/')
     caption = models.CharField(max_length=3000)
@@ -57,6 +64,13 @@ class Comment(models.Model):
     # post = models.ForeignKey(Post,on_delete=models.CASCADE)
     post = models.IntegerField()
 
+    def save_comment(self):
+        self.save()
+
+    # @classmethod
+    # def delete_comment(self):
+    #     self.delete()
+    #
 class Followers(models.Model):
     username= models.ForeignKey(User,on_delete=models.CASCADE)
     user = models.CharField(max_length=100)
