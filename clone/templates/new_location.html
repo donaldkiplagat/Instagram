@@ -19,12 +19,21 @@
 
 <body>
 
-  <form  action="{%url 'new-location'%}" method="post" enctype="multipart/form-data">
-    {%csrf_token%}
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="logo-header">
+        <img alt="Brand" src="{% static 'img/brand.png' %}" height=70 >
+      </div>
+      <form  action="{%url 'new-location'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
 
-    {% bootstrap_form form%}
-    <input type="submit" class="btn btn-success btn-lg" value="Share">
-  </form>
+        {% bootstrap_form form%}
+        <input type="submit" class="btn btn-success btn-lg" value="Share">
+      </form>
+    </div>
+  </div>
+
+
 
    {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -33,3 +42,15 @@
 </body>
 
 </html>
+<style>
+.panel{
+  margin: auto;
+  width:40%;
+  height:40%;
+  margin-top: 4%;
+}
+.panel-body{
+    margin: auto;
+    text-align: center;
+}
+</style>

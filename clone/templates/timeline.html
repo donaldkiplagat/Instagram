@@ -36,7 +36,7 @@
   <div class="card-body">
     <div class="card-footer-section">
     <h5 class="card-title username">{{post.likes}} likes</h5>
-    <p class="card-text username">{{post.username}} <span class="caption"> {{post.caption|truncatechars:80}}</span></p>
+    <p class="card-text username">{{post.username}} <span class="caption"> {{post.caption | safe}}</span></p>
     <br>
     <div id="card{{post.id}}" class="mt-2">
            {%for comment in comments%}
